@@ -54,7 +54,7 @@ require(['jquery','jquerycookie'], function($){
 		let $target = $(".regist_phNum .regist_ysame_enter");
 		$num.on("input",function(){
 			let val = $num[0].value;
-			let reg=/^1[2-9]{10}$/;
+			let reg=/^1[3-9][0-9]{9}$/;
 			if(reg.test(val)){
 				$target.hide();
 				login[1]=true;
@@ -148,9 +148,7 @@ require(['jquery','jquerycookie'], function($){
 			let stop = login.every((val)=>val);
 			console.log(stop);
 			console.log(login);
-			if(stop){
-				alert(1);
-			}else{
+			if(!stop){
 				return false;
 			}
 		})

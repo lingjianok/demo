@@ -42,11 +42,36 @@
 	
 	<!--主体-->
 	<div class="login_main s_main">
-		
+		<div class="login-wrap">
+			<div class="mod_login">
+				<div class="login_hint">账号和密码不匹配，请重新输入</div>
+				<div class="login_tit clear">
+					<h1>1号店用户登录</h1>
+					<a href="register.html">新用户注册</a>
+				</div>
+				<div class="login_user">
+					<input type="text" id="user" placeholder="用户名/手机"/>
+				</div>
+				<div class="login_pass">
+					<input type="password" id="pass" placeholder="请输入密码"/>
+				</div>
+				<div class="login_help">
+					<label>
+						<input type="checkbox" name=""/>
+						自动登录
+					</label>&nbsp;
+					<a href="#">忘记密码</a>
+				</div>
+				<div class="login_btn">登录</div>
+			</div>
+		</div>
 	</div>
 	<!--尾部-->
 	<div class="login_foot s_foot">
 		
 	</div>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

@@ -1,5 +1,14 @@
 
 
+//登录检测
+(function(){
+	let cookie = $.cookie("user");
+	if(cookie){
+		let username = JSON.parse(cookie).username;
+		$("#user").html("Hi,"+username);
+	}
+})();
+
 //头部广告
 (function(){
 	$(".hd_adv").on("click",function(e){
