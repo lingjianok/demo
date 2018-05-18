@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/normalize.css"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
-<body>
+<body class="cart_body">
 	<!--与主页相同的头部-->
 	<div class="index_header clear">
 		<div class="header_first">
@@ -106,13 +106,126 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<div class="empty">
 		<div class="empty_warp">
 			<p>购物车还是空的呢，快去采购吧~或者登录查看之前加入的商品。</p>
 			<a href="#">去逛逛</a>
 		</div>
 	</div>
-	<div></div>
+	
+	<!--有商品时-->
+	<div class="has cat_wrap">
+		<div class="cat_tit clear">
+			<div class="cat_tit_checkall cat_tit_box">
+				<label class="checkall">
+					<input type="checkbox" class="checkall_inp"/>
+					<span>全选</span>
+				</label>
+			</div>
+			<div class="cat_tit_msg cat_tit_box">
+				商品信息
+			</div>
+			<div class="cat_tit_pirce cat_tit_box">
+				单价(元)
+			</div>
+			<div class="cat_tit_num cat_tit_box">
+				数量
+			</div>
+			<div class="cat_tit_count cat_tit_box">
+				小计
+			</div>
+			<div class="cat_tit_operation cat_tit_box">
+				操作
+			</div>
+		</div>
+		<!--购物车列表-->
+		<div class="cat_goods_list">
+			<!--购物车单个商品-->
+			<div class="cat_good clear" style="display: none;">
+				<div class="check_good">
+					<input type="checkbox" class="check_btn"/>
+				</div>
+				<div class="cat_good_msg">
+					<img src="//img12.360buyimg.com/n1/s50x50_jfs/t3181/241/9127406531/110691/43733c57/58cf4f7aN28c7d04d.jpg"/>
+					<div class="cat_good_msg_tit">
+						<span>
+							来伊份 坚果炒货 休闲零食 每日坚果7日装什锦混合果仁 天天坚果活力派175g
+						</span>
+					</div>
+				</div>
+				<div class="cat_good_price">
+					<span>31.90</span>
+				</div>
+				<div class="cat_good_num">
+					<div class="cat_good_num_box clear">
+						<button class="cat_good_num_btnl" type="button">-</button>
+						<input class="cat_good_num_inp" type="text" value="1"/>
+						<button class="cat_good_num_btnr" type="button">+</button>
+					</div>
+				</div>
+				<div class="cat_good_count">
+					<span>31.90</span>
+				</div>
+				<div class="cat_good_operation">
+					<button class="cat_good_operation_btn">删除</button>
+				</div>
+			</div>
+
+		</div>
+		<div class="cat_stat clear">
+			<div class="cat_stat_l" >
+				<div class="cat_stat_checkall cat_stat_box">
+					<label class="checkall">
+						<input class="checkall_inp" type="checkbox" style="vertical-align:middle;"/>
+							全选（共
+							<span class="all_num">0</span>
+							件）
+					</label>
+				</div>
+				<div class="del_all">
+					<span>删除选中的</span>
+				</div>
+			</div>
+			<div class="cat_stat_r">
+				<div class="cat_stat_num">
+					已选商品
+					<span class="check_num">0</span>
+					件
+				</div>
+				<div class="cat_stat_count">
+					<span>合计:</span>
+					<span class="cat_stat_count_num">
+						00
+					</span>
+					
+				</div>
+				<div class="pay">
+					<a href="#">去买单</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--有商品时end-->
+	
+	<div class="like cat_wrap">
+		<h2>
+			<p>猜您喜欢</p>
+			<p>实时推荐最适合您的商品</p>
+		</h2>
+		<div class="like_list clear">
+			<!--<div class="like_good">
+				<img src="//img12.360buyimg.com/n1/s50x50_jfs/t3181/241/9127406531/110691/43733c57/58cf4f7aN28c7d04d.jpg"/>
+				<p>￥31.90</p>
+				<h3>来伊份 坚果炒货 休闲零食 每日坚果7日装什锦混合果仁 天天坚果活力派175g</h3>
+				<button class="addcat">
+					加入购物车
+				</button>
+			</div>-->
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script src="js/cat.js"></script>
 </body>
 </html>

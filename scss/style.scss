@@ -855,9 +855,17 @@ ol,ul,li{
 
 /*  购物车页面
   ==============================*/
+.cart_body{
+   background: #f8f8f8;
+}
+.cat_wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
 .empty {
     padding: 200px 0 200px;
     background: #f8f8f8;
+    border-bottom: 1px solid #F3A3AD;
 }
 .empty_warp {
     width: 280px;
@@ -876,5 +884,265 @@ ol,ul,li{
         padding: 0 20px;
         border-radius: 3px;
         font-weight: 900;
+    }
+}
+/*
+     有商品的模块
+  =================================*/
+.has{
+    padding: 50px 0;
+}
+.cat_tit{
+    margin: 20px 0;
+    border: 1px solid #E0E0E0;
+    padding: 10px 30px;
+    background: #fff;
+    border-radius: 5px;
+}
+.cat_tit_box{
+    float: left;
+    text-align: center;
+}
+.cat_tit_checkall {
+    width: 100px;
+    text-align: left;
+}
+.cat_tit_msg{
+    width: 400px;
+}
+.cat_tit_pirce{
+    width: 150px;
+}
+.cat_tit_num{
+    width: 150px;
+}
+.cat_tit_count{
+    width: 180px;
+}
+.cat_tit_operation{
+    width: 150px;
+}
+/*购物车商品列表
+  ==================*/
+.cat_goods_list {
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    padding: 10px 30px;
+    background: #fff;
+}
+.cat_good{
+    padding: 10px 0;
+    border-bottom: 1px dashed #E0E0E0;
+    &:last-of-type{
+        border: 0;
+    }
+}
+.check_good{
+    float: left;
+    width: 30px;
+    height: 60px;
+    line-height: 60px;
+}
+.cat_good_msg{
+    float: left;
+    width: 470px;
+    img{
+        float: left;
+        margin: 10px;
+    }
+}
+.cat_good_msg_tit{
+    float: left;
+    width: 390px;
+    padding: 10px 0;
+    span{
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+.cat_good_price{
+    float: left;
+    width: 150px;
+    line-height: 70px;
+    text-align: center;
+}
+.cat_good_num{
+    float: left;
+    width: 150px;
+    .cat_good_num_box{
+        float: left;
+        margin: 25px 0 0 40px;
+        padding: 2px 0;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+    }
+    button,input{
+        float: left;
+        border: 0;
+        background: #fff;
+        text-align: center;
+        outline: none;
+    }
+    input{
+        width: 30px;
+        border-width: 0 1px;
+        border-style: solid;
+        border-color: #DDDDDD;
+    }
+    button{
+        width: 15px;
+    }
+}
+.cat_good_count{
+    float: left;
+    width: 180px;
+    line-height: 70px;
+    text-align: center;
+}
+.cat_good_operation{
+    float: left;
+    width: 150px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.cat_stat{
+    margin-top: 20px;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    padding: 10px 30px;
+    background: #fff;
+    line-height: 30px;
+}
+.cat_stat_l{
+    float: left;
+}
+.cat_stat_checkall {
+    float: left;
+    label{
+        float: left;
+        padding-right: 20px;
+        border-right: 1px solid #ddd;
+    }
+}
+.checkall_inp {
+    vertical-align: middle;
+    margin-right: 30px;
+}
+.del_all{
+    float: left;
+    margin-left: 30px;
+    cursor: pointer;
+    color:#999;
+    &:hover{
+        color:$red;
+    }
+}
+.cat_stat_r{
+    float: right;
+}
+.cat_stat_num{
+    float: left;
+    padding-right: 20px;
+    border-right: 1px solid #ddd;
+    .check_num{
+        color: red;
+    }
+}
+.cat_stat_count{
+    float: left;
+    padding: 0 20px;
+    height: 30px;
+    line-height: 30px;
+    &>span{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .cat_stat_count_num{
+        font-size: 24px;
+        font-weight: 900;
+        color: red;
+    }
+}
+.pay{
+    float: left;
+    margin: -10px -30px -10px 0;
+    
+    &>a{
+        display: block;
+        padding: 0 30px;
+        border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 26px;
+        font-weight: 900;
+        color: #fff;
+        background: #f00;
+    }
+}
+
+/*
+    猜你喜欢
+   ====================*/
+.like{
+    padding: 30px 0 50px;
+    &>h2{
+        text-align: center;
+        &>p:first-of-type{
+            color: #FEE202;
+            padding: 10px 0;
+            font-size: 20px;
+            font-weight: 900;
+        }
+    }
+}
+.like_list{
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 20px 1px;
+}
+.like_good{
+    float:left;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid transparent;
+    width: 299px;
+    text-align: center;
+    &:hover{
+        border-color: red;
+    }
+    img{
+        width: 200px;
+        margin-left: 28px;
+        margin-bottom: 20px;
+    }
+    p{
+        padding: 10px 0;
+        color: red;
+        font-weight: 900;
+    }
+    h3{
+        text-align: left;
+        height: 40px;
+        line-height: 20px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    button{
+        border:0;
+        background: #DDD;
+        padding: 0 10px;
+        border-radius: 3px;
+        line-height: 24px;
+        cursor: pointer;
+        outline: none;
+        &:active{
+            background: #ccc;
+            transform: translateY(1px);
+        }
     }
 }
