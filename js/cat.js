@@ -1,5 +1,5 @@
 
-
+(function(){
 	let goodsData = [];
 	let sidArr = [];
 	let numArr = [];
@@ -52,8 +52,10 @@
 			numArr.push(1);
 			$.cookie("sidArr",sidArr,{expires:30});
 			$.cookie("numArr",numArr,{expires:30});
+			changeEH();
 			fnClone(sid,1);
 			$(".cat_good:visible:last").find(".check_btn").prop("checked",true);
+			checkChange();
 		}
 	});
 	//5.点击删除按钮
@@ -65,8 +67,37 @@
 			numArr.splice(index,1);
 			setCookie();
 			$(this).parents(".cat_good").remove();
+			changeEH();
 		}
 	});
+	//6.点击删除选中的
+	$(".del_all").on("click",function(){
+		let $list = $(".check_btn:visible:checked");
+		if($list.length==1){
+			if(confirm('你确定要删除吗？')){
+				let sid = $list.parents(".cat_good").find("img").attr("sid");
+				let index = sidArr.indexOf(sid);
+				sidArr.splice(index,1);
+				numArr.splice(index,1);
+				setCookie();
+				$list.parents(".cat_good").remove();
+				changeEH();
+			}
+		}else if($list.length>1){
+			if(confirm('你确定要删除吗？')){
+				$list.each(function(index,ele){
+					let sid = $(ele).parents(".cat_good").find("img").attr("sid");
+					index = sidArr.indexOf(sid);
+					sidArr.splice(index,1);
+					numArr.splice(index,1);
+					setCookie();
+					$(ele).parents(".cat_good").remove();
+					changeEH();
+				});
+			}
+		}
+		
+	})
 	
 	//5.点击全选事件
 	$(".has").on("change",".checkall_inp",function(){
@@ -75,16 +106,7 @@
 	});
 	
 	//6.点击商品复选框事件
-	$(".has").on("change",".check_btn",function(){
-		let check = [...$(".has .check_btn:visible")].every(function(ele,index,arr){
-			return $(ele).prop("checked");
-		});
-		$(".checkall_inp").each(function(index,ele){
-			$(ele).prop("checked",check)
-		})
-		allcount();
-	});
-	
+	$(".has").on("change",".check_btn",checkChange);	
 	
 	//7.改变商品数量的事件
 	$(".has").on("input", ".cat_good_num_inp",function(){
@@ -108,13 +130,26 @@
 	
 	
 	
-	
-	
+	//空和有切换
+	function changeEH(){
+		if(sidArr.length && numArr.length){
+			$empty.hide();
+			$has.show();
+		}else{
+			$empty.show();
+			$has.hide();
+		}
+	}
 	
 	//方法1、cookie数组化;
 	function cookieToArr(){
-		sidArr = $.cookie("sidArr").split(",");
-		numArr = $.cookie("numArr").split(",");
+		if($.cookie("sidArr")==""||!$.cookie("sidArr")){
+			sidArr = [];
+			numArr = [];
+		}else {
+			sidArr = $.cookie("sidArr").split(",");
+			numArr = $.cookie("numArr").split(",");
+		}
 	};
 	function setCookie(){
 		$.cookie("sidArr",sidArr.toString(),{expires:30});
@@ -208,10 +243,14 @@
 	function fnInput(ele){
 		let sid = $(ele).parents(".cat_good").find(".cat_good_msg img").attr("sid");
 		let index = sidArr.indexOf(sid);
-		if(+$(ele).val()>=99){
+		let val = $(ele).val();
+		val = val.replace(/[^0-9]/g,"");
+		if(+val>=99){
 			$(ele).val("99");
-		}else if (+$(ele).val()<=1){
+		}else if (+val<=1){
 			$(ele).val("1");
+		}else{
+			$(ele).val(val);
 		}
 		numArr[index]=$(ele).val();
 		$.cookie("numArr",numArr,{expires:30});
@@ -225,3 +264,16 @@
 		//调用单品数量改变时触发的函数
 		fnInput($(ele).siblings(".cat_good_num_inp"));
 	};
+	
+	//方法、点击单品复选状态改变时调用的函数
+	function checkChange(){
+		let check = [...$(".has .check_btn:visible")].every(function(ele,index,arr){
+			return $(ele).prop("checked");
+		});
+		$(".checkall_inp").each(function(index,ele){
+			$(ele).prop("checked",check)
+		})
+		allcount();
+	}
+	
+})();

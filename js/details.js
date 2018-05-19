@@ -133,7 +133,24 @@
 //加入购物车
 (function(){
 	let $btn=$(".cartbox");
+	let sidArr = [];
+	let numArr = [];
+	cookieToArr();
+	function cookieToArr(){
+		if($.cookie("sidArr")==""||!$.cookie("sidArr")){
+			sidArr = [];
+			numArr = [];
+		}else {
+			sidArr = $.cookie("sidArr").split(",");
+			numArr = $.cookie("numArr").split(",");
+		}
+	};
+	function setCookie(){
+		$.cookie("sidArr",sidArr.toString(),{expires:30});
+		$.cookie("numArr",numArr.toString(),{expires:30});
+	};
 	$btn.on("click", function(e){
+		//运动部分
 		let startX = e.pageX;
 		let startY = e.pageY;
 		let endX = $(".hd_prism_cart").offset().left;
@@ -151,5 +168,40 @@
 		},500,function(){
 			$(this).remove();
 		});
+		
+		//改变cook部分
+		cookieToArr();
+		let sid = $(this).attr("sid");
+		let num = +$("#cartnum").val();
+		let index = sidArr.indexOf(sid);
+		if(index==-1){
+			sidArr.push(sid);
+			numArr.push(num);
+			setCookie();
+		}else{
+			console.log(num);
+			num = num + +numArr[index];
+			if(num>=99){
+				num = 99;
+			}
+			numArr[index] = num;
+			setCookie();
+		}
+	});
+})();
+
+
+//改变数量的限制
+(function(){
+	$("body").on("input", "#cartnum",function(){
+		let val = $(this).val();
+		val = val.replace(/[^0-9]/g,"");
+		if(+val>=99){
+			$(this).val("99");
+		}else if(+val<=1){
+			$(this).val("1");
+		}else{
+			$(this).val(val);
+		}
 	});
 })();
